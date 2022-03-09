@@ -12,14 +12,14 @@ int Student::getAge(){
     return this->age;
 }
 
-std::vector<double> Student::getGrade(){
-    return this->grade;
+double * Student::getGrade(){
+    return this->p_getGrade;
 }
 
 void Student::printGrade(){
     std::cout << "\n";
     std::cout << getID() << " | " << getName() << " | " << getAge() << " | " << std::endl; 
-    for (auto &ele:grade)
+    for (auto &ele:p_getGrade)
         std::cout << ele << " ";
     std::cout << std::endl;    
 }

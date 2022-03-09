@@ -2,7 +2,6 @@
 #define _STUDENT_H_
 #include <string>
 #include <iostream>
-#include <vector>
 
 class Student
 {
@@ -11,13 +10,11 @@ private:
     int id;
     std::string name;
     int age;
-    std::vector<double> grade;
+    double *p_grade;
     
 public:
-    Student(int id_val, std::string name_val, int age_val, std::vector<double> grade_val);
     Student(int id_val, std::string name_val, int age_val);
     Student(int id_val, std::string name_val);
-    Student(int id_val);
     Student();
     
     ~Student();
@@ -25,33 +22,34 @@ public:
     int getID();
     std::string getName();
     int getAge();
-    std::vector<double> getGrade();
+    double *getGrade();
 
     void printGrade();
 
 };
 
 //Constructor initialisation list
-Student::Student(int id_val, std::string name_val, int age_val, std::vector<double> grade_val)
-    :id{id_val}, name{name_val}, age{age_val}, grade{grade_val}{
-}
-
 Student::Student(int id_val, std::string name_val, int age_val)
-    :Student {id_val, name_val, age_val, {-1}}{
+    :id{id_val}, name{name_val}, age{age_val}{
+        std::cout << "\nType the number of subject\n";
+        int subj;
+        std::cin >> subj; 
+        p_grade = new double[subj];
+        std::cout << "\nType the grade of each subject\n";
+        
+
 }
 
 Student::Student(int id_val, std::string name_val)
-    :Student {id_val, name_val, -1, {-1}}{
-}
-
-Student::Student(int id_val)
-    :Student {id_val, "None", -1, {-1}}{
+    :Student {id_val, name_val, -1}{
 }
 
 Student::Student()
-    :Student {-1, "None", -1, {-1}}{
+    :Student {-1, "None", -1}{
 }
 
+
+//Destructor
 Student::~Student()
 {
 }
